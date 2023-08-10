@@ -44,7 +44,7 @@ const ExpenseForm = props => {
           <label>Amount</label>
           <input
             type="number"
-            min="0.01"
+            // min="0.01"
             onChange={amountHandler}
             value={amount}
           />
@@ -53,8 +53,8 @@ const ExpenseForm = props => {
           <label>Date</label>
           <input
             type="date"
-            min="2019-01-01"
-            max="2022-12-31"
+            // min="2019-01-01"
+            // max="2022-12-31"
             value={date}
             onChange={dataHandler}
           />
