@@ -1,13 +1,13 @@
+import React from "react";
 import "./ChartBar.css";
 
-const chartBar = (props) => {
+const chartBar = props => {
   let barFillHeight = "0%";
   console.log(props);
 
   if (props.value > 0) {
     barFillHeight = Math.round((props.value / props.maxValue) * 100) + "%";
   }
-  console.log();
   return (
     <div className="chart-bar">
       <div className="chart-bar__inner">

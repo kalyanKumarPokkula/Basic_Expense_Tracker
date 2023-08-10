@@ -1,7 +1,8 @@
+import React from "react";
 import "./ExpenseFilter.css";
 
 function ExpenseFilter(props) {
-  const expenseFilterHandler = (event) => {
+  const expenseFilterHandler = event => {
     props.onExpenseFilterData(event.target.value);
   };
 

@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import "./App.css";
 import Expense from "./components/Expense/Expense";
@@ -28,7 +29,7 @@ const DUMMY_EXPENSES = [
 function App() {
   const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
-  const addExpenseHandler = (expensesData) => {
+  const addExpenseHandler = expensesData => {
     console.log("in App");
     console.log(expensesData);
     setExpenses([expensesData, ...expenses]);

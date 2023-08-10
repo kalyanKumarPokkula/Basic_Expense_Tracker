@@ -1,3 +1,4 @@
+import React from "react";
 import ExpenseItem from "./ExpenseItem";
 import "./Expense.css";
 import ExpenseFilter from "./ExpenseFilter";

@@ -1,8 +1,9 @@
+import React from "react";
 import ExpenseForm from "./ExpenseForm";
 import "./NewExpense.css";
 
-const NewExpense = (props) => {
-  const ExpenseDateHandler = (enteredExpenseData) => {
+const NewExpense = props => {
+  const ExpenseDateHandler = enteredExpenseData => {
     let expenseDate = {
       ...enteredExpenseData,
       id: Math.random().toString(),
