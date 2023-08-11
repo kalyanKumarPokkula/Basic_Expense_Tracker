@@ -11,6 +11,8 @@
 # production
 /build
 
+know_hosts
+
 # misc
 .DS_Store
 .env.local
