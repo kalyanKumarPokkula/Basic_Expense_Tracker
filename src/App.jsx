@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./App.css";
 import Expense from "./components/Expense/Expense";
 import NewExpense from "./components/NewExpense/NewExpense";
+import Navbar from "./components/Nav/Navbar";
 
 const DUMMY_EXPENSES = [
   {
@@ -61,6 +62,7 @@ function App() {
 
   return (
     <div>
+      <Navbar />
       <NewExpense onAddExpense={addExpenseHandler} />
       <Expense expenses={expenses} />
     </div>
