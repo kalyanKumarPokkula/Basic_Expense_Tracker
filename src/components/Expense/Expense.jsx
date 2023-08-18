@@ -6,15 +6,16 @@ import ExpenseChart from "./ExpenseChart";
 import { useState } from "react";
 
 function Expense(props) {
-  const [expenseFilter, setExpenseFilter] = useState("2021");
+  const [expenseFilter, setExpenseFilter] = useState("2023");
 
   const expenseFilterHandler = entertedExpenseFilterYear => {
     setExpenseFilter(entertedExpenseFilterYear);
     console.log(entertedExpenseFilterYear);
   };
 
-  const filteredExenses = props.expenses.filter(expense => {
-    return expense.date.getFullYear().toString() === expenseFilter;
+  var filteredExenses = props.expenses.filter(expense => {
+    const date = new Date(expense.date).getFullYear();
+    return date.toString() === expenseFilter;
   });
 
   return (
@@ -24,14 +25,16 @@ function Expense(props) {
         onExpenseFilterData={expenseFilterHandler}
       />
 
-      {filteredExenses.length === 0 && <h2>No expenses are found.</h2>}
       <ExpenseChart expenses={filteredExenses} />
+      {filteredExenses.length === 0 && (
+        <h2 style={{ marginTop: "20px" }}>No expenses are found.</h2>
+      )}
       {filteredExenses.length > 0 &&
         filteredExenses.map(expense => (
           <ExpenseItem
-            key={expense.id}
+            key={expense._id}
             title={expense.title}
-            amount={expense.amount}
+            price={expense.price}
             date={expense.date}
           />
         ))}
