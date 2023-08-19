@@ -20,7 +20,7 @@ const ExpenseChart = props => {
   for (var i = 0; i < props.expenses.length; i++) {
     const date = new Date(props.expenses[i].date);
     const expenseMonth = date.getMonth();
-    chartDataPoints[expenseMonth].value += props.expenses[i].price;
+    chartDataPoints[expenseMonth].value += Number(props.expenses[i].price);
   }
 
   return <Chart dataPoints={chartDataPoints} />;

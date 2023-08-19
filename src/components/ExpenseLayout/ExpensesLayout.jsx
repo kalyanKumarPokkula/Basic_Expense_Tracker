@@ -92,6 +92,7 @@ const ExpensesLayout = () => {
         );
 
         console.log(response.data.data);
+        setExpenses(pre => [...pre, response.data.data]);
       } catch (error) {
         console.log(error);
       }
