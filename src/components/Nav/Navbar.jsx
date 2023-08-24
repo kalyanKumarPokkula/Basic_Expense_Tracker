@@ -27,6 +27,14 @@ const Navbar = ({ user, setUser }) => {
               navigator("/expense");
             }}
           >
+            Add Expense
+          </div>
+          <div
+            className="btn"
+            onClick={() => {
+              navigator("/expenses");
+            }}
+          >
             Expenses
           </div>
           <div

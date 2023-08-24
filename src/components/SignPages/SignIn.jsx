@@ -27,14 +27,14 @@ const SignIn = ({ setUser }) => {
     console.log(user);
     async function SignInApi() {
       try {
-        let response = await axios.post("http://127.0.0.1:3001/api/v1/signin", {
+        let response = await axios.post("http://localhost:3001/api/v1/signin", {
           ...user,
         });
 
         console.log(response.data, "inside signin user");
         localStorage.setItem("token", response.data.data.token);
         setUser(response.data.data);
-        navigator("/expense");
+        navigator("/expenses");
       } catch (error) {
         console.log("Error fetching data:", error);
         setIsValidMessage(error.response.data.err.message);

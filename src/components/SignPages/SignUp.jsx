@@ -35,7 +35,7 @@ const SignUp = ({ setUser }) => {
         });
         localStorage.setItem("token", response.data.data.token);
         setUser(response.data.data);
-        navigator("/expense");
+        navigator("/expenses");
       } catch (error) {
         console.log("error");
       }

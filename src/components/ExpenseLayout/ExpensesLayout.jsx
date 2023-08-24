@@ -1,7 +1,6 @@
 import React from "react";
 
 import Expense from "../Expense/Expense";
-import NewExpense from "../NewExpense/NewExpense";
 import axios from "axios";
 
 import { useState, useEffect } from "react";
@@ -76,33 +75,8 @@ const ExpensesLayout = () => {
     getExpenses();
   }, []);
 
-  const addExpenseHandler = expensesData => {
-    async function addExpense() {
-      try {
-        let response = await axios.post(
-          "http://127.0.0.1:3001/api/v1/expense",
-          {
-            ...expensesData,
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
-
-        console.log(response.data.data);
-        setExpenses(pre => [...pre, response.data.data]);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
-    addExpense();
-  };
   return (
     <div>
-      <NewExpense onAddExpense={addExpenseHandler} />
       <Expense expenses={expenses} />
     </div>
   );

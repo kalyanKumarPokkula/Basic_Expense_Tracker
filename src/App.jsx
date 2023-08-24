@@ -11,6 +11,8 @@ import SignIn from "./components/SignPages/SignIn";
 import SignUp from "./components/SignPages/SignUp";
 import LandingPage from "./components/LandingPage/LandingPage";
 import ExpensesLayout from "./components/ExpenseLayout/ExpensesLayout";
+import NewExpense from "./components/NewExpense/NewExpense";
+import ExpenseUpdate from "./components/Update/ExpenseUpdate";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -45,7 +47,9 @@ function App() {
           <Route path="/signin" element={<SignIn setUser={setUser} />} />
           <Route path="/signup" element={<SignUp setUser={setUser} />} />
           <Route path="/" element={<LandingPage user={user} />} />
-          <Route path="/expense" element={<ExpensesLayout />} />
+          <Route path="/expenses" element={<ExpensesLayout />} />
+          <Route path="/expense" element={<NewExpense />} />
+          <Route path="/expense/:id" element={<ExpenseUpdate />} />
         </Routes>
       </Router>
     </div>

@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import "./ExpenseForm.css";
+import "../NewExpense/ExpenseForm.css";
 
-const ExpenseForm = props => {
+const ExpenseUpdateForm = props => {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState("");
@@ -37,7 +37,7 @@ const ExpenseForm = props => {
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="title">
-          <h2>Add_Expense</h2>
+          <h2>Update_Expense</h2>
         </div>
         <div className="new-expense__control">
           <label>Title</label>
@@ -63,11 +63,11 @@ const ExpenseForm = props => {
           />
         </div>
         <div className="new-expense__actions">
-          <button type="submit">Add Expense</button>
+          <button type="submit">Update Expense</button>
         </div>
       </div>
     </form>
   );
 };
 
-export default ExpenseForm;
+export default ExpenseUpdateForm;
