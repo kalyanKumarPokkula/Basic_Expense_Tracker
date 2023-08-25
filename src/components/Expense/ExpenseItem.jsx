@@ -3,10 +3,10 @@ import "./ExpenseItem.css";
 import ExpenseDate from "./ExpenseDate";
 import { MdDelete } from "react-icons/md";
 import { HiPencilAlt } from "react-icons/hi";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function ExpenseItem({ title, date, price }) {
-  const { ExpenseId } = useParams();
+function ExpenseItem({ title, date, price, id }) {
+  // const { ExpenseId } = useParams();
   const navigator = useNavigate();
 
   return (
@@ -20,7 +20,7 @@ function ExpenseItem({ title, date, price }) {
             <div
               className="expense-item__icon"
               onClick={() => {
-                navigator(`/expense/${title}`);
+                navigator(`/expense/${id}`);
               }}
             >
               <HiPencilAlt size={17} />

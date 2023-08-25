@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import Alert from "@mui/material/Alert";
 
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
 const SignIn = ({ setUser }) => {
@@ -49,7 +49,7 @@ const SignIn = ({ setUser }) => {
     <div className="sign-container">
       <div
         className="sign"
-        style={{ height: `${isvalidMessage ? "418px" : "400px"}` }}
+        style={{ height: `${isvalidMessage ? "430px" : "390px"}` }}
       >
         <div className="title">SIGN-IN</div>
         {isvalidMessage && <Alert severity="error">{isvalidMessage}</Alert>}
@@ -84,6 +84,9 @@ const SignIn = ({ setUser }) => {
           />
         </div>
         <button onClick={SubmitHandler}>Sign in</button>
+        <div className="bottom">
+          <p>New here?</p> <Link to="/signup">Register </Link>
+        </div>
       </div>
     </div>
   );

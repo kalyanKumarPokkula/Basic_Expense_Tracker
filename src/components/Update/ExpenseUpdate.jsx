@@ -3,7 +3,9 @@ import ExpenseUpdateForm from "./ExpenseUpdateFrom";
 import "../NewExpense/NewExpense.css";
 
 const ExpenseUpdate = () => {
-  const UpdateExpenseHandler = () => {};
+  const UpdateExpenseHandler = expense => {
+    console.log(expense);
+  };
   return (
     <div className="new_expense">
       <ExpenseUpdateForm onSaveExpenseData={UpdateExpenseHandler} />

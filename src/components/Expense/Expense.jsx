@@ -33,6 +33,7 @@ function Expense(props) {
         filteredExenses.map(expense => (
           <ExpenseItem
             key={expense._id}
+            id={expense._id}
             title={expense.title}
             price={expense.price}
             date={expense.date}
