@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import "../NewExpense/ExpenseForm.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { URL } from "../../config";
 
 const ExpenseUpdateForm = props => {
   const { id } = useParams();
@@ -13,14 +14,11 @@ const ExpenseUpdateForm = props => {
   useEffect(() => {
     async function expense() {
       try {
-        let response = await axios.get(
-          `http://127.0.0.1:3001/api/v1/expense/${id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
+        let response = await axios.get(`${URL}/api/v1/expense/${id}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
 
         console.log(response.data.data);
         setTitle(response.data.data.title);

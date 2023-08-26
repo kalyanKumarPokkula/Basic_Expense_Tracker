@@ -1,1 +1,1 @@
-export const URL = "http://localhost:3001";
+export const URL = "http://expensetrack.dineshnikhil.com:3001";
