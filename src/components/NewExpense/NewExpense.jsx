@@ -3,6 +3,7 @@ import ExpenseForm from "./ExpenseForm";
 import "./NewExpense.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { URL } from "../../config";
 
 const NewExpense = props => {
   const navigator = useNavigate();
@@ -10,7 +11,7 @@ const NewExpense = props => {
     async function addExpense() {
       try {
         let response = await axios.post(
-          "http://127.0.0.1:3001/api/v1/expense",
+          `${URL}/api/v1/expense`,
           {
             ...expensesData,
           },
