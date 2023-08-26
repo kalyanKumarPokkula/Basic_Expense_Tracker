@@ -18,6 +18,10 @@ function Expense(props) {
     return date.toString() === expenseFilter;
   });
 
+  let onDeleteExpenseHandler = expenseId => {
+    props.onDeleteHandler(expenseId);
+  };
+
   return (
     <div className="expense">
       <ExpenseFilter
@@ -37,6 +41,7 @@ function Expense(props) {
             title={expense.title}
             price={expense.price}
             date={expense.date}
+            onDeleteHandler={onDeleteExpenseHandler}
           />
         ))}
       {/* <ExpenseItem

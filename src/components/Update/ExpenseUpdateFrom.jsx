@@ -9,6 +9,7 @@ const ExpenseUpdateForm = props => {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState("");
+  const [expense, setExpense] = useState(null);
   useEffect(() => {
     async function expense() {
       try {
@@ -24,7 +25,12 @@ const ExpenseUpdateForm = props => {
         console.log(response.data.data);
         setTitle(response.data.data.title);
         setAmount(response.data.data.price);
-        setDate(response.data.data.date);
+
+        const date = response.data.data.date.substring(0, 10);
+
+        setDate(date);
+
+        setExpense(response.data.data);
       } catch (error) {
         console.log(error);
       }
@@ -47,15 +53,14 @@ const ExpenseUpdateForm = props => {
 
     const expenseData = {};
 
-    if (title) {
+    if (title !== expense.title) {
       expenseData.title = title;
     }
 
-    if (amount) {
+    if (amount !== expense.price) {
       expenseData.price = amount;
     }
-
-    if (date) {
+    if (date !== expense.date.substring(0, 10)) {
       expenseData.date = new Date(date);
     }
 

@@ -5,7 +5,7 @@ import { MdDelete } from "react-icons/md";
 import { HiPencilAlt } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 
-function ExpenseItem({ title, date, price, id }) {
+function ExpenseItem({ title, date, price, id, onDeleteHandler }) {
   // const { ExpenseId } = useParams();
   const navigator = useNavigate();
 
@@ -25,7 +25,12 @@ function ExpenseItem({ title, date, price, id }) {
             >
               <HiPencilAlt size={17} />
             </div>
-            <div className="expense-item__icon">
+            <div
+              className="expense-item__icon"
+              onClick={() => {
+                onDeleteHandler(id);
+              }}
+            >
               <MdDelete size={17} />
             </div>
           </div>

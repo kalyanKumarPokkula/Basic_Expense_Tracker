@@ -6,6 +6,7 @@ import Alert from "@mui/material/Alert";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import { URL } from "../../config";
 
 const SignIn = ({ setUser }) => {
   const navigator = useNavigate();
@@ -27,7 +28,7 @@ const SignIn = ({ setUser }) => {
     console.log(user);
     async function SignInApi() {
       try {
-        let response = await axios.post("http://localhost:3001/api/v1/signin", {
+        let response = await axios.post(`${URL}/api/v1/signin`, {
           ...user,
         });
 

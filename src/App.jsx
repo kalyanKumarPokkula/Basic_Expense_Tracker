@@ -15,6 +15,7 @@ import NewExpense from "./components/NewExpense/NewExpense";
 import ExpenseUpdate from "./components/Update/ExpenseUpdate";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { URL } from "./config";
 
 function App() {
   let [user, setUser] = useState(null);
@@ -23,7 +24,7 @@ function App() {
   useEffect(() => {
     async function getUser() {
       try {
-        let response = await axios.get("http://127.0.0.1:3001/api/v1/me", {
+        let response = await axios.get(`${URL}/api/v1.me`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },

@@ -4,6 +4,7 @@ import Expense from "../Expense/Expense";
 import axios from "axios";
 
 import { useState, useEffect } from "react";
+import { URL } from "../../config";
 
 // const DUMMY_EXPENSES = [
 //   {
@@ -53,18 +54,16 @@ import { useState, useEffect } from "react";
 
 const ExpensesLayout = () => {
   const [expenses, setExpenses] = useState([]);
+  const [deleteExpense, setDeleteExpense] = useState(null);
 
   useEffect(() => {
     async function getExpenses() {
       try {
-        let response = await axios.get(
-          "http://127.0.0.1:3001/api/v1/expenses",
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
+        let response = await axios.get(`${URL}/api/v1/expenses`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
 
         console.log(response.data.data);
         setExpenses([...response.data.data]);
@@ -73,11 +72,25 @@ const ExpensesLayout = () => {
       }
     }
     getExpenses();
-  }, []);
+  }, [deleteExpense]);
+
+  const deleteExpenseHandler = async expenseId => {
+    try {
+      let response = await axios.delete(`${URL}/api/v1/expense/${expenseId}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      setDeleteExpense(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
-      <Expense expenses={expenses} />
+      <Expense expenses={expenses} onDeleteHandler={deleteExpenseHandler} />
     </div>
   );
 };

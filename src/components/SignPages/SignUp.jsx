@@ -5,6 +5,7 @@ import TextField from "@mui/material/TextField";
 import Alert from "@mui/material/Alert";
 
 import { useNavigate, Link } from "react-router-dom";
+import { URL } from "../../config";
 
 const SignUp = ({ setUser }) => {
   const navigator = useNavigate();
@@ -30,7 +31,7 @@ const SignUp = ({ setUser }) => {
     console.log(user);
     async function SignupApi() {
       try {
-        let response = await axios.post("http://127.0.0.1:3001/api/v1/signup", {
+        let response = await axios.post(`${URL}/api/v1/signup`, {
           ...user,
         });
         localStorage.setItem("token", response.data.data.token);
