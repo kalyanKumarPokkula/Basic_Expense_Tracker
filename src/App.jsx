@@ -10,9 +10,9 @@ import {
 import SignIn from "./components/SignPages/SignIn";
 import SignUp from "./components/SignPages/SignUp";
 import LandingPage from "./components/LandingPage/LandingPage";
-import ExpensesLayout from "./components/ExpenseLayout/ExpensesLayout";
 import NewExpense from "./components/NewExpense/NewExpense";
 import ExpenseUpdate from "./components/Update/ExpenseUpdate";
+import Expense from "./components/Expense/Expense";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { URL } from "./config";
@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     async function getUser() {
       try {
-        let response = await axios.get(`${URL}/api/v1.me`, {
+        let response = await axios.get(`${URL}/api/v1/me`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -47,8 +47,11 @@ function App() {
         <Routes>
           <Route path="/signin" element={<SignIn setUser={setUser} />} />
           <Route path="/signup" element={<SignUp setUser={setUser} />} />
-          <Route path="/" element={<LandingPage user={user} />} />
-          <Route path="/expenses" element={<ExpensesLayout />} />
+          <Route
+            path="/"
+            element={<LandingPage user={user} setUser={setUser} />}
+          />
+          <Route path="/expenses" element={<Expense />} />
           <Route path="/expense" element={<NewExpense />} />
           <Route path="/expense/:id" element={<ExpenseUpdate />} />
         </Routes>

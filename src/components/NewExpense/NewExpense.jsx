@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import ExpenseForm from "./ExpenseForm";
 import "./NewExpense.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Alert from "@mui/material/Alert";
 import { URL } from "../../config";
 
 const NewExpense = props => {
   const navigator = useNavigate();
+  const [success, setSuccess] = useState(false);
   const addExpenseHandler = expensesData => {
     async function addExpense() {
       try {
@@ -23,7 +25,10 @@ const NewExpense = props => {
         );
 
         console.log(response.data.data);
-        navigator("/expenses");
+        setSuccess(true);
+        setTimeout(() => {
+          navigator("/expenses");
+        }, 1000);
       } catch (error) {
         console.log(error);
       }
@@ -33,7 +38,22 @@ const NewExpense = props => {
   };
 
   return (
-    <div className="new_expense">
+    <div>
+      {success && (
+        <div
+          style={{
+            width: "29rem",
+            marginTop: "16px",
+            position: "absolute",
+            top: "80px",
+            right: "12px",
+          }}
+        >
+          <Alert severity="success">
+            successfully created a expense alert — check it out!!
+          </Alert>
+        </div>
+      )}
       <ExpenseForm onSaveExpenseData={addExpenseHandler} />
     </div>
   );

@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import ExpenseUpdateForm from "./ExpenseUpdateFrom";
-import "../NewExpense/NewExpense.css";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { URL } from "../../config";
@@ -35,11 +34,7 @@ const ExpenseUpdate = () => {
       navigator("/expenses");
     }
   };
-  return (
-    <div className="new_expense">
-      <ExpenseUpdateForm onSaveExpenseData={UpdateExpenseHandler} />
-    </div>
-  );
+  return <ExpenseUpdateForm onSaveExpenseData={UpdateExpenseHandler} />;
 };
 
 export default ExpenseUpdate;

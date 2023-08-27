@@ -4,7 +4,7 @@ import expense from "../../expenseImage.png";
 import Grid from "@mui/material/Grid";
 import { useNavigate } from "react-router-dom";
 
-const LandingPage = ({ user }) => {
+const LandingPage = ({ user, setUser }) => {
   const navigator = useNavigate();
   return (
     <div className="landingpage-contianer">
@@ -32,8 +32,9 @@ const LandingPage = ({ user }) => {
                 <div
                   className="btn"
                   onClick={() => {
-                    navigator("/");
                     localStorage.setItem("token", null);
+                    setUser(null);
+                    navigator("/");
                   }}
                 >
                   Log out
