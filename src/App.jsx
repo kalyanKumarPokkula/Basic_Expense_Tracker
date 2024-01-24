@@ -16,7 +16,6 @@ import Expense from "./components/Expense/Expense";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { URL } from "./config";
-
 function App() {
   let [user, setUser] = useState(null);
   // const navigator = useNavigate();

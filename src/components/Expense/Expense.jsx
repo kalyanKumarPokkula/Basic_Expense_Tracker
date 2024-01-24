@@ -9,7 +9,7 @@ import axios from "axios";
 import { URL } from "../../config";
 
 function Expense(props) {
-  const [expenseFilter, setExpenseFilter] = useState("2022");
+  const [expenseFilter, setExpenseFilter] = useState("2024");
   const [expenses, setExpenses] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
