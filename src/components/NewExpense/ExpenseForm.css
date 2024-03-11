@@ -43,6 +43,24 @@
   max-width: 100%;
 }
 
+.new-expense__control select {
+  font: inherit;
+  padding: 0.7rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 100%;
+}
+
+.new-expense__control select option {
+  font: inherit;
+  padding: 0.7rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 100%;
+}
+
 .new-expense__actions {
   margin-top: 1.5rem;
   text-align: right;

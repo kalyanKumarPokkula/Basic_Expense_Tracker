@@ -16,9 +16,16 @@
   margin-bottom: 0.7rem;
 }
 
-.expense-filter select {
+.expense-filter .select {
   font: inherit;
   padding: 0.5rem 3rem;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+#category-filter {
+  font: inherit;
+  padding: 0.5rem 0.5rem;
   font-weight: bold;
   border-radius: 6px;
 }

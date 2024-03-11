@@ -9,22 +9,25 @@ import axios from "axios";
 import { URL } from "../../config";
 
 function Expense(props) {
-  const [expenseFilter, setExpenseFilter] = useState("2024");
+  const [expenseFilterByYear, setExpenseFilterByYear] = useState("2024");
+  const [expenseFilterByCategory, setExpenseFilterByCategory] = useState("");
   const [expenses, setExpenses] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     async function getExpenses() {
       try {
-        let response = await axios.get(
-          `${URL}/api/v1/expenses/${expenseFilter}`,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
-
+        let response = await axios.get(`${URL}/api/v1/expenses`, {
+          params: {
+            year: expenseFilterByYear,
+            category: expenseFilterByCategory,
+          },
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        console.log(response.data.data);
         setExpenses([...response.data.data]);
         setLoading(false);
       } catch (error) {
@@ -33,10 +36,14 @@ function Expense(props) {
     }
 
     getExpenses();
-  }, [expenseFilter]);
+  }, [expenseFilterByYear, expenseFilterByCategory]);
 
-  const expenseFilterHandler = entertedExpenseFilterYear => {
-    setExpenseFilter(entertedExpenseFilterYear);
+  const expenseFilterByYearHandler = entertedExpenseFilterYear => {
+    setExpenseFilterByYear(entertedExpenseFilterYear);
+  };
+
+  const expenseFilterByCategoryHandler = entertedExpenseFilterCategory => {
+    setExpenseFilterByCategory(entertedExpenseFilterCategory);
   };
 
   // var filteredExenses = expenses.filter(expense => {
@@ -72,8 +79,10 @@ function Expense(props) {
   return (
     <div className="expense">
       <ExpenseFilter
-        selected={expenseFilter}
-        onExpenseFilterData={expenseFilterHandler}
+        selectedYear={expenseFilterByYear}
+        selectedCategory={expenseFilterByCategory}
+        onExpenseFilterByYear={expenseFilterByYearHandler}
+        onExpenseFilterByCategory={expenseFilterByCategoryHandler}
       />
 
       <ExpenseChart expenses={expenses} />
@@ -95,6 +104,7 @@ function Expense(props) {
                 title={expense.title}
                 price={expense.price}
                 date={expense.date}
+                category={expense.category}
                 onDeleteHandler={onDeleteExpenseHandler}
               />
             ))}

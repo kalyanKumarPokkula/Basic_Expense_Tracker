@@ -11,10 +11,10 @@ const Navbar = ({ user, setUser }) => {
       </div>
       {!user && (
         <div className="btn-container">
-          <div className="btn" onClick={() => navigator("/signin")}>
+          <div className="logout-btn" onClick={() => navigator("/signin")}>
             Sign in
           </div>
-          <div className="btn" onClick={() => navigator("/signup")}>
+          <div className="logout-btn" onClick={() => navigator("/signup")}>
             Sign up
           </div>
         </div>
@@ -22,23 +22,32 @@ const Navbar = ({ user, setUser }) => {
       {user && (
         <div className="btn-container">
           <div
-            className="btn"
-            onClick={() => {
-              navigator("/expense");
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "20px",
+              marginRight: "10px",
             }}
           >
-            Add Expense
+            <div
+              className="btn"
+              onClick={() => {
+                navigator("/expense");
+              }}
+            >
+              Add Expense
+            </div>
+            <div
+              className="btn"
+              onClick={() => {
+                navigator("/expenses");
+              }}
+            >
+              Expenses
+            </div>
           </div>
           <div
-            className="btn"
-            onClick={() => {
-              navigator("/expenses");
-            }}
-          >
-            Expenses
-          </div>
-          <div
-            className="btn"
+            className="logout-btn"
             onClick={() => {
               localStorage.setItem("token", null);
               setUser(null);
