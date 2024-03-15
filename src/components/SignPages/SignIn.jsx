@@ -33,9 +33,13 @@ const SignIn = ({ setUser }) => {
         });
 
         console.log(response.data, "inside signin user");
-        localStorage.setItem("token", response.data.data.token);
-        setUser(response.data.data);
-        navigator("/expenses");
+        if (response.data.data.isVerified) {
+          localStorage.setItem("token", response.data.data.token);
+          setUser(response.data.data);
+          navigator("/expenses");
+        } else {
+          navigator(`/verify?token=${response.data.data.id}`);
+        }
       } catch (error) {
         console.log("Error fetching data:", error);
         setIsValidMessage(error.response.data.err.message);

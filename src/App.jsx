@@ -16,6 +16,7 @@ import Expense from "./components/Expense/Expense";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { URL } from "./config";
+import VerifyEmail from "./components/VerifyEmail/VerifyEmail";
 function App() {
   let [user, setUser] = useState(null);
   // const navigator = useNavigate();
@@ -45,7 +46,7 @@ function App() {
         <Navbar user={user} setUser={setUser} />
         <Routes>
           <Route path="/signin" element={<SignIn setUser={setUser} />} />
-          <Route path="/signup" element={<SignUp setUser={setUser} />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route
             path="/"
             element={<LandingPage user={user} setUser={setUser} />}
@@ -53,6 +54,8 @@ function App() {
           <Route path="/expenses" element={<Expense />} />
           <Route path="/expense" element={<NewExpense />} />
           <Route path="/expense/:id" element={<ExpenseUpdate />} />
+
+          <Route path="verify" element={<VerifyEmail setUser={setUser} />} />
         </Routes>
       </Router>
     </div>

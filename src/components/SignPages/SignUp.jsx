@@ -7,7 +7,7 @@ import Alert from "@mui/material/Alert";
 import { useNavigate, Link } from "react-router-dom";
 import { URL } from "../../config";
 
-const SignUp = ({ setUser }) => {
+const SignUp = () => {
   const navigator = useNavigate();
 
   let [email, setEmail] = useState("");
@@ -34,9 +34,10 @@ const SignUp = ({ setUser }) => {
         let response = await axios.post(`${URL}/api/v1/signup`, {
           ...user,
         });
-        localStorage.setItem("token", response.data.data.token);
-        setUser(response.data.data);
-        navigator("/expenses");
+        // localStorage.setItem("token", response.data.data.token);
+        // setUser(response.data.data);
+        console.log(response.data.data);
+        navigator(`/verify?token=${response.data.data._id}`);
       } catch (error) {
         console.log("error");
       }
