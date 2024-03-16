@@ -57,7 +57,9 @@ const VerifyEmail = ({ setUser }) => {
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div className="verify-layout">
         {!verified && <h1 style={{ color: "#40005D" }}>Enter OTP</h1>}
-        {verified && <h1 style={{ color: "green" }}>Successfully Verified</h1>}
+        {verified && (
+          <h1 style={{ color: "#40005D" }}>Successfully Verified</h1>
+        )}
         <h3 style={{ color: "black", padding: "20px 0px" }}>
           Check your email for OTP
         </h3>
