@@ -1,1 +1,1 @@
-export let URL = process.env.REACT_APP_API_URL;
+export let URL = "http://35.154.215.213:3001";
